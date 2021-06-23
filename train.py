@@ -144,15 +144,16 @@ def main(args=None):
                 loss_hist.append(float(loss))
 
                 epoch_loss.append(float(loss))
-                print('Epoch: {} | Iteration: {} | Classification loss: {:1.5f} | Regression loss: {:1.5f} | Running loss: {:1.5f}'.format(
-                        epoch_num, iter_num, float(classification_loss), float(regression_loss), np.mean(loss_hist))end='\r') 
-                
+             
+                cl_loss = classification_loss
+                reg_loss = regression_loss
                 del classification_loss
                 del regression_loss
             except Exception as e:
                 print(e)
                 continue
-               
+        print('Epoch: {} | Iteration: {} | Classification loss: {:1.5f} | Regression loss: {:1.5f} | Running loss: {:1.5f}'.format(
+                        epoch_num, iter_num, float(cl_loss), float(reg_loss), np.mean(loss_hist)))       
         if parser.dataset == 'coco':
 
             print('Evaluating dataset')
