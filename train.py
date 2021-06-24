@@ -146,7 +146,7 @@ def main(args=None):
                 epoch_loss.append(float(loss))
                 if (iter_num % 500 == 0 ):
                     print('Epoch: {} | Iteration: {} | Classification loss: {:1.5f} | Regression loss: {:1.5f} | Running loss: {:1.5f}'.format(
-                        epoch_num, iter_num, float(cl_loss), float(reg_loss), np.mean(loss_hist)))       
+                        epoch_num, iter_num, float(classification_loss), float(regression_loss), np.mean(loss_hist)))       
                 #cl_loss = classification_loss
                 #reg_loss = regression_loss
                 del classification_loss
