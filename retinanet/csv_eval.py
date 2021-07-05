@@ -155,7 +155,7 @@ def evaluate(
     iou_threshold=0.5,
     score_threshold=0.05,
     max_detections=100,
-    save_path='/content/drive/My Drive/Hardhat/Test'
+    save_path='/content/drive/My Drive/hatvest/test'
 ):
     """ Evaluate a given dataset using a given retinanet.
     # Arguments
