@@ -223,7 +223,18 @@ def evaluate(
         # compute false positives and true positives
         false_positives = np.cumsum(false_positives)
         true_positives  = np.cumsum(true_positives)
-
+        print("true positive:",true_positives)
+        print("false positive:",false_positives)
+      
+       
+        print(num_annotations)
+        
+        array_length = len(true_positives)
+        if (array_length>1):
+           last_element = true_positives[array_length - 1]
+           print("True detection:", last_element)
+        else:
+           print("True detection: 0")
         # compute recall and precision
         recall    = true_positives / num_annotations
         precision = true_positives / np.maximum(true_positives + false_positives, np.finfo(np.float64).eps)
