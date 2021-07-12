@@ -80,7 +80,13 @@ class RegressionModel(nn.Module):
 
         self.conv4 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act4 = nn.ReLU()
-
+        
+        self.conv5 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
+        self.act5 = nn.ReLU()
+        
+        self.conv6 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
+        self.act6 = nn.ReLU()
+        
         self.output = nn.Conv2d(feature_size, num_anchors * 4, kernel_size=3, padding=1)
 
     def forward(self, x):
@@ -95,7 +101,13 @@ class RegressionModel(nn.Module):
 
         out = self.conv4(out)
         out = self.act4(out)
-
+        
+        out = self.conv5(out)
+        out = self.act5(out)
+        
+        out = self.conv6(out)
+        out = self.act6(out)
+        
         out = self.output(out)
 
         # out is B x C x W x H, with C = 4*num_anchors
@@ -122,7 +134,13 @@ class ClassificationModel(nn.Module):
 
         self.conv4 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act4 = nn.ReLU()
-
+        
+        self.conv5 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
+        self.act5 = nn.ReLU()
+        
+        self.conv6 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
+        self.act6 = nn.ReLU()
+        
         self.output = nn.Conv2d(feature_size, num_anchors * num_classes, kernel_size=3, padding=1)
         self.output_act = nn.Sigmoid()
 
@@ -139,6 +157,12 @@ class ClassificationModel(nn.Module):
         out = self.conv4(out)
         out = self.act4(out)
 
+        out = self.conv5(out)
+        out = self.act5(out)
+        
+        out = self.conv6(out)
+        out = self.act6(out)
+        
         out = self.output(out)
         out = self.output_act(out)
 
