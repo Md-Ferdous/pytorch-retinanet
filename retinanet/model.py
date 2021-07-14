@@ -113,22 +113,22 @@ class ClassificationModel(nn.Module):
 
         self.conv1 = nn.Conv2d(num_features_in, feature_size, kernel_size=3, padding=1)
         self.act1 = nn.ReLU()
-        self.bat1 = nn.BatchNorm2d()
+        self.bat1 = nn.BatchNorm2d(num_features_in)
         self.pool1 = nn.MaxPool2d(kernel_size=3)
 
         self.conv2 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act2 = nn.ReLU()
-        self.bat2 = nn.BatchNorm2d()
+        self.bat2 = nn.BatchNorm2d(num_features_in)
         self.pool2 = nn.MaxPool2d(kernel_size=3)
         
         self.conv3 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act3 = nn.ReLU()
-        self.bat3 = nn.BatchNorm2d()
+        self.bat3 = nn.BatchNorm2d(num_features_in)
         self.pool3 = nn.MaxPool2d(kernel_size=3)
         
         self.conv4 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act4 = nn.ReLU()
-        self.bat4 = nn.BatchNorm2d()
+        self.bat4 = nn.BatchNorm2d(num_features_in)
         self.pool4 = nn.MaxPool2d(kernel_size=3)
         
         self.output = nn.Conv2d(feature_size, num_anchors * num_classes, kernel_size=3, padding=1)
