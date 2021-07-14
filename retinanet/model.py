@@ -113,32 +113,48 @@ class ClassificationModel(nn.Module):
 
         self.conv1 = nn.Conv2d(num_features_in, feature_size, kernel_size=3, padding=1)
         self.act1 = nn.ReLU()
+        self.bat1 = nn.BatchNorm2d()
+        self.pool1 = nn.MaxPool2d(kernel_size=3)
 
         self.conv2 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act2 = nn.ReLU()
-
+        self.bat2 = nn.BatchNorm2d()
+        self.pool2 = nn.MaxPool2d(kernel_size=3)
+        
         self.conv3 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act3 = nn.ReLU()
-
+        self.bat3 = nn.BatchNorm2d()
+        self.pool3 = nn.MaxPool2d(kernel_size=3)
+        
         self.conv4 = nn.Conv2d(feature_size, feature_size, kernel_size=3, padding=1)
         self.act4 = nn.ReLU()
-
+        self.bat4 = nn.BatchNorm2d()
+        self.pool4 = nn.MaxPool2d(kernel_size=3)
+        
         self.output = nn.Conv2d(feature_size, num_anchors * num_classes, kernel_size=3, padding=1)
         self.output_act = nn.Sigmoid()
 
     def forward(self, x):
         out = self.conv1(x)
         out = self.act1(out)
-
+        out = self.bat1(out)
+        out = self.pool1(out)
+        
         out = self.conv2(out)
         out = self.act2(out)
-
+        out = self.bat2(out)
+        out = self.pool2(out)
+        
         out = self.conv3(out)
         out = self.act3(out)
-
+        out = self.bat3(out)
+        out = self.pool3(out)
+        
         out = self.conv4(out)
         out = self.act4(out)
-
+        out = self.bat4(out)
+        out = self.pool4(out)
+        
         out = self.output(out)
         out = self.output_act(out)
 
