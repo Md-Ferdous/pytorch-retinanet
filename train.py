@@ -108,7 +108,7 @@ def main(args=None):
 
     retinanet.train()
     retinanet.module.freeze_bn()
-
+    retinanet.summary()
     print('Num training images: {}'.format(len(dataset_train)))
 
     for epoch_num in range(parser.epochs):
