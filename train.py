@@ -86,7 +86,7 @@ def main(args=None):
         retinanet = model.resnet152(num_classes=dataset_train.num_classes(), pretrained=True)
     else:
         raise ValueError('Unsupported model depth, must be one of 18, 34, 50, 101, 152')
-    ratinanet.summary()
+    
     use_gpu = True
 
     if use_gpu:
